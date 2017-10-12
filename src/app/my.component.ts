@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-component',
-  template: `
+  template: ` {{title}}
     <p>xcvxcvxcv
       app Works!
     </p>

@@ -1,18 +1,9 @@
 import { Component } from '@angular/core';
 
-
-type conditionType = "new" | "used" | "discontinued";
-
-export class Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  condition: conditionType;
-}
+import { Product } from './product';
 
 @Component({
-  selector: 'product-component',
+  selector: 'product-list',
   template: ` 
     <h1>{{title}}</h1>
 
@@ -27,26 +18,8 @@ export class Product {
     </li>
     </ul>
 
-    <div *ngIf="selectedProduct">
-    <h2>{{selectedProduct.name}} details!</h2>
-    <div><label>id: </label>{{selectedProduct.id}}</div>
-    <div>
-      <label>Name: </label>
-      <input [(ngModel)]="selectedProduct.name" placeholder="name"/>
-    </div>
-    <div>
-      <label>Description: </label>
-      <input [(ngModel)]="selectedProduct.description" placeholder="description"/>
-    </div>
-    <div>
-      <label>Price: </label>
-      <input [(ngModel)]="selectedProduct.price" placeholder="price"/>
-    </div>
-    <div>
-      <label>Condition: </label>
-      <input [(ngModel)]="selectedProduct.condition" placeholder="condition"/>
-    </div>
-  </div>
+    <product-detail  [selectedProduct]="selectedProduct"></product-detail>
+
     `,
   styles: [`
   .selected {
@@ -98,7 +71,7 @@ export class Product {
   }
 `]
 })
-export class ProductComponent {
+export class ProductListComponent {
   title: "Product List";
   products = PRODUCTS;
   selectedProduct: Product;

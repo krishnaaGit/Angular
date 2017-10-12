@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <p>
       app Works!
     </p>
-    <product-component></product-component>
+    <product-list></product-list>
   `,
   styles: []
 })

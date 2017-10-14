@@ -5,18 +5,17 @@ import { FormsModule }   from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MyComponent } from './my.component';
 
-import { ProductListComponent } from './product-list.component';
-import { ProductDetailComponent } from './product-detail.component';
 import { DesignModule } from './design/design.module';
+import { ProductModule } from './product/product.module';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, MyComponent, ProductListComponent, ProductDetailComponent
+    AppComponent, MyComponent
   ],
   imports: [
-    BrowserModule,  FormsModule, DesignModule
+    BrowserModule,  FormsModule, DesignModule, ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]

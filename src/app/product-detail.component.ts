@@ -6,15 +6,15 @@ import { Product } from './product';
   selector: 'product-detail',
   template: ` 
   <div *ngIf="selectedProduct">
-    <h2>{{selectedProduct.name}} details!</h2>
+    <h2 [innerHTML] = "selectedProduct.name | summary:10" > details!</h2>
     <div><label>id: </label>{{selectedProduct.id}}</div>
     <div>
       <label>Name: </label>
-      <input [(ngModel)]="selectedProduct.name" placeholder="name"/>
+      <input myHighlight highlightColor="yellow" [(ngModel)]="selectedProduct.name" placeholder="name"/>
     </div>
     <div>
       <label>Description: </label>
-      <input [(ngModel)]="selectedProduct.description" placeholder="description"/>
+      <input [ngModel]="selectedProduct.description" (ngModelChange)="upper($event)"  placeholder="description"/>
     </div>
     <div>
       <label>Price: </label>
@@ -30,6 +30,9 @@ import { Product } from './product';
 })
 export class ProductDetailComponent {
    @Input() selectedProduct: Product;
+    upper(value:string){
 
+      this.selectedProduct.description = value.toUpperCase();
+    }
 
 }

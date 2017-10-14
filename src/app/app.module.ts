@@ -7,13 +7,16 @@ import { MyComponent } from './my.component';
 
 import { ProductListComponent } from './product-list.component';
 import { ProductDetailComponent } from './product-detail.component';
+import { DesignModule } from './design/design.module';
+
+
 
 @NgModule({
   declarations: [
     AppComponent, MyComponent, ProductListComponent, ProductDetailComponent
   ],
   imports: [
-    BrowserModule,  FormsModule
+    BrowserModule,  FormsModule, DesignModule
   ],
   providers: [],
   bootstrap: [AppComponent]

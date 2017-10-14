@@ -6,11 +6,11 @@ import { Product } from './product';
   selector: 'product-detail',
   template: ` 
   <div *ngIf="selectedProduct">
-    <h2 [innerHTML] = "selectedProduct.name" > details!</h2>
+    <h2 [innerHTML] = "selectedProduct.name | summary:10" > details!</h2>
     <div><label>id: </label>{{selectedProduct.id}}</div>
     <div>
       <label>Name: </label>
-      <input [(ngModel)]="selectedProduct.name" placeholder="name"/>
+      <input myHighlight highlightColor="yellow" [(ngModel)]="selectedProduct.name" placeholder="name"/>
     </div>
     <div>
       <label>Description: </label>

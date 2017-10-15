@@ -3,13 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <p>
-      app Works!
-    </p>
+  <h1>{{title}}</h1>
     <product-list></product-list>
   `,
   styles: []
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Angular project';
 }

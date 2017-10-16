@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from './product';
+import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
 
 @Component({
@@ -24,15 +25,42 @@ import { Product } from './product';
       <label>Condition: </label>
       <input [(ngModel)]="selectedProduct.condition" placeholder="condition"/>
     </div>
-  </div>
+    <div>
+      <input [(ngModel)]="quantity" placeholder="Quantity"/>
+      <button (click)="addToCart()">Add to Cart</button> </div>
+    </div>
+    <div>
+    <label>Total Items: </label> {{totalItems}}
+    <label>Total Amount: </label>$ {{totalAmount}}
+    <button (click)="showCartItems = true">
+        Show Shopping Cart
+      </button>
+    </div>
+  
+    <div *ngIf="showCartItems">
+      <cart-item-list></cart-item-list>
+    </div>
+  
     `,
   styles: []
 })
 export class ProductDetailComponent {
-   @Input() selectedProduct: Product;
-    upper(value:string){
+  @Input() selectedProduct: Product;
+  quantity: number;
+  totalItems:number = 0;
+  totalAmount:number = 0;
+  showCartItems:boolean = false;
+  upper(value: string) {
 
-      this.selectedProduct.description = value.toUpperCase();
-    }
+    this.selectedProduct.description = value.toUpperCase();
+  }
+
+  constructor(private shoppingCartService: ShoppingCartService) { }
+
+  addToCart() {
+    this.shoppingCartService.addItem(this.selectedProduct, this.quantity);
+    this.totalItems = this.shoppingCartService.cart.totalItems();
+    this.totalAmount = this.shoppingCartService.cart.totalAmount();
+  }
 
 }

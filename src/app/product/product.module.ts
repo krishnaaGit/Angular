@@ -5,6 +5,9 @@ import { CommonModule }       from '@angular/common';
 import { ProductListComponent } from './product-list.component';
 import { ProductDetailComponent } from './product-detail.component';
 import { DesignModule } from '../design/design.module';
+import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
+import { CartItemListComponent } from '../shopping-cart/cart-item-list.component';
+import {ItemCostPipe} from "../shopping-cart/item-cost.pipe"
 
 
 @NgModule({
@@ -15,12 +18,14 @@ import { DesignModule } from '../design/design.module';
   ],
   declarations: [
      ProductListComponent,
-     ProductDetailComponent
+     ProductDetailComponent,
+     CartItemListComponent,
+     ItemCostPipe
   ],
   exports: [
     ProductListComponent,
     ProductDetailComponent
   ],
-  providers: []
+  providers: [ShoppingCartService]
 })
 export class ProductModule { }

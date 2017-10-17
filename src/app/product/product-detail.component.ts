@@ -28,28 +28,15 @@ import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
     <div>
       <input [(ngModel)]="quantity" placeholder="Quantity"/>
       <button (click)="addToCart()">Add to Cart</button> </div>
-    </div>
-    <div>
-    <label>Total Items: </label> {{totalItems}}
-    <label>Total Amount: </label>$ {{totalAmount}}
-    <button (click)="showCartItems = true">
-        Show Shopping Cart
-      </button>
-    </div>
-  
-    <div *ngIf="showCartItems">
-      <cart-item-list></cart-item-list>
-    </div>
-  
+    </div> 
     `,
   styles: []
 })
 export class ProductDetailComponent {
   @Input() selectedProduct: Product;
-  quantity: number;
-  totalItems:number = 0;
-  totalAmount:number = 0;
-  showCartItems:boolean = false;
+  quantity: number = 1 ;
+  
+  
   upper(value: string) {
 
     this.selectedProduct.description = value.toUpperCase();
@@ -59,8 +46,7 @@ export class ProductDetailComponent {
 
   addToCart() {
     this.shoppingCartService.addItem(this.selectedProduct, this.quantity);
-    this.totalItems = this.shoppingCartService.cart.totalItems();
-    this.totalAmount = this.shoppingCartService.cart.totalAmount();
+   
   }
 
 }

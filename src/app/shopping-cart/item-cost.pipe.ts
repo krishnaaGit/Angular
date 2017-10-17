@@ -6,7 +6,7 @@ import {CartItem} from "./cart"
     name: 'itemCost'
 })
 export class ItemCostPipe implements PipeTransform {
-    transform(item: CartItem) {
+    transform(item: CartItem,quantity?:number) {
         return item.product.price * item.quantity;
     }
 }

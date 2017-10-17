@@ -5,16 +5,13 @@ import {CartItem,Cart} from "../shopping-cart/cart"
 import {ItemCostPipe} from "../shopping-cart/item-cost.pipe"
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
-
-
-
 @Component({
   selector: 'cart-item-list',
   template: ` 
     <h1>{{title}}</h1>
 
     <ul class="products">
-    <li *ngFor="let cartItem of cart.items">    
+    <li *ngFor="let cartItem of cart.items">    -
       <span><label>id: </label>{{cartItem.product.id}}</span>
       <span><label>name: </label>{{cartItem.product.name}}</span>
       <span><label>description: </label>{{cartItem.product.description}}</span>

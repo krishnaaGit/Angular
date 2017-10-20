@@ -6,7 +6,11 @@ import { Product,PRODUCTS } from "../product/product"
 @Injectable()
 export class ProductService {
 
-  public addItem(product: Product): void {
+  addItem(product: Product): void {
     PRODUCTS.push(product);    
   }
+
+  getProducts():Promise<Product[]>{
+    return Promise.resolve(PRODUCTS);
+  } 
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
-import { Product,PRODUCTS } from './product';
+import { Product } from './product';
+import { ProductService } from './product.service';
+
 
 @Component({
   selector: 'product-list',
@@ -9,11 +11,21 @@ import { Product,PRODUCTS } from './product';
 })
 export class ProductListComponent {
   title: "Product List";
-  products = PRODUCTS;
+  products:Product[];
   selectedProduct: Product;
+
+  constructor(private productService:ProductService){}
 
   onSelect(product: Product): void {
     this.selectedProduct = product;
+  }
+
+  getProducts(): void {
+    this.productService.getProducts().then(products => this.products = products);
+  }
+ 
+  ngOnInit(): void {
+    this.getProducts();
   }
 
 }

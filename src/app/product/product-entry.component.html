@@ -1,15 +1,19 @@
-<form>
+<form #productEntryForm = "ngForm" (ngSubmit)="addProduct(productEntryForm,productName)">
+
+  <div *ngIf="productEntryForm.errors" class="alert alert-danger"> Please enter valid product data </div>
   <div class="form-group">
     <label for="product_name">Product Name</label>
-    <input required minlength="5" name="product_name" #productName="ngModel" (change)="log(productName)" id="product_name" type="text"
-      class="form-control" [(ngModel)]="product.name">
+    <input ngModel required pattern="PR.*"  minlength="2" name="product_name" #productName="ngModel" id="product_name" type="text"
+      class="form-control" [(ngModel)]="product.name" forbiddenName="PR1">
     <div class="alert alert-danger" *ngIf="productName.touched && !productName.valid">
-      Product Name is required.
-    </div>
+        <div *ngIf="productName.errors.required">Product name is required.</div> 
+        <div *ngIf="productName.errors.pattern">Product name does not match the pattern.</div>
+        <div *ngIf="productName.errors.forbiddenName">Product name should not be PR1.</div>
+      </div>
   </div>
   <div class="form-group">
     <label for="description">Description</label>
     <textarea name="description" id="description" cols="30" rows="10" class="form-control" [(ngModel)]="product.description"></textarea>
   </div>
-  <button class="btn btn-primary" (click)="addProduct()">Submit</button>
+  <button class="btn btn-primary" type="submit" [disabled]="!productEntryForm.valid">Submit</button>
 </form>

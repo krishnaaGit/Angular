@@ -10,20 +10,22 @@ import { ProductService } from './product.service';
 })
 export class ProductEntryComponent {
   product: Product = new Product();
-  quantity: number = 1 ;
-   
+ 
   constructor(private productService: ProductService) { }
 
-  addProduct() {
-   
-    this.productService.addItem(this.product);
-    this.product = new Product();
-   
+  addProduct(productEntryForm,productName) {
+    console.log(productEntryForm);
+    console.log(productName.errors);
+    if (productEntryForm.valid) {
+      this.productService.addItem(this.product);
+      this.product = new Product();
+      productEntryForm.reset();
+    }
   }
 
   log(model) {
     console.log(model);
-    }
-    
+  }
+
 
 }

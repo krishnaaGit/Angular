@@ -4,6 +4,7 @@ import { CommonModule }       from '@angular/common';
 
 import { ProductListComponent } from './product-list.component';
 import { ProductDetailComponent } from './product-detail.component';
+import { ForbiddenValidatorDirective } from './forbidden-name.directive';
 import { ProductEntryComponent } from './product-entry.component';
 
 import { DesignModule } from '../design/design.module';
@@ -27,7 +28,8 @@ import {ItemCostPipe} from "../shopping-cart/item-cost.pipe"
      ShoppingCartComponent,
      CartItemListComponent,
      ProductEntryComponent,
-     ItemCostPipe
+     ItemCostPipe,
+     ForbiddenValidatorDirective
   ],
   exports: [
     ProductEntryComponent,

@@ -1,0 +1,15 @@
+<h1>
+  {{title}}</h1>
+
+<ul class="products">
+  <li *ngFor="let cartItem of cart.items"> -
+    <span><label>id: </label>{{cartItem.product.id}}</span>
+    <span><label>name: </label>{{cartItem.product.name}}</span>
+    <span><label>description: </label>{{cartItem.product.description}}</span>
+    <span><label>condition: </label>{{cartItem.product.condition}}</span>
+    <span><label>rate: </label>$ {{cartItem.product.price}}</span>
+    <span><label>quantity: </label>$ {{cartItem.quantity}}</span>
+    <span><label>total: </label>$ {{cartItem | itemCost }}</span>
+
+  </li>
+</ul>

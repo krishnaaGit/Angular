@@ -1,0 +1,15 @@
+<form>
+  <div class="form-group">
+    <label for="product_name">Product Name</label>
+    <input required minlength="5" name="product_name" #productName="ngModel" (change)="log(productName)" id="product_name" type="text"
+      class="form-control" [(ngModel)]="product.name">
+    <div class="alert alert-danger" *ngIf="productName.touched && !productName.valid">
+      Product Name is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" id="description" cols="30" rows="10" class="form-control" [(ngModel)]="product.description"></textarea>
+  </div>
+  <button class="btn btn-primary" (click)="addProduct()">Submit</button>
+</form>

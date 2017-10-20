@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
   <h1>{{title}}</h1>
   <shopping-cart></shopping-cart>
+  <product-entry></product-entry>
     <product-list></product-list>
   `,
   styles: []
